@@ -16,6 +16,8 @@ public class Demo : Node2D, IClientCollection
     public void ClientConfiguration(IServiceCollection service)
     {
         var test = service.GetService<ICreatorService>();
+        var test2 = service.GetService<ICreatorService>();
         GD.Print(test.GetHashCode());
+        GD.Print(test2.GetHashCode());
     }
 }

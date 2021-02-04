@@ -33,6 +33,7 @@ namespace XHSystem.Context.Extensions
                     {
                         var service = fo.GetValue(context) as IServiceCollection;
                         method.Invoke(client, new object[] {service} );
+                        service.ScopedEnd();
                         return context as IContextObject;
                     }
                 }

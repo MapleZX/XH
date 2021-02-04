@@ -81,7 +81,7 @@ namespace XHSystem.Context
 
         public TService GetService<TService>() where TService : class
         {
-            var value = (TService)GetService(typeof(TService), OBJECTNAME);
+            var value = (TService)GetService<TService>(OBJECTNAME);
 			return value;
         }
 
@@ -89,7 +89,7 @@ namespace XHSystem.Context
         {
             var value = default(TService);
 			var type = typeof(TService);
-
+	
 			if (singleton_objects.ContainsKey(type))
 			{
 				var modules = singleton_objects[type];
