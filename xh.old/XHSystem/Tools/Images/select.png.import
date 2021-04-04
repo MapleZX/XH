@@ -1,0 +1,13 @@
+[remap]
+
+importer="image"
+type="Image"
+path="res://.import/select.png-0319d933a0f3f9ae3382e73995eea32a.image"
+
+[deps]
+
+source_file="res://XHSystem/Tools/Images/select.png"
+dest_files=[ "res://.import/select.png-0319d933a0f3f9ae3382e73995eea32a.image" ]
+
+[params]
+

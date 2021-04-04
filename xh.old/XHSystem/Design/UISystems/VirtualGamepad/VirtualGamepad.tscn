@@ -1,0 +1,81 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://XHSystem/Design/UISystems/VirtualGamepad/Joysticks/Joystick.tscn" type="PackedScene" id=1]
+[ext_resource path="res://XHSystem/Design/UISystems/VirtualGamepad/VirtualGamepad.cs" type="Script" id=2]
+[ext_resource path="res://XHSystem/Design/UISystems/VirtualGamepad/TouchButton/TouchScreenButtonControl.tscn" type="PackedScene" id=3]
+
+[node name="VirtualGamepad" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LeftJoystick" parent="." instance=ExtResource( 1 )]
+anchor_top = 0.5
+anchor_right = 0.0
+anchor_bottom = 0.5
+margin_left = -2.0
+margin_top = -137.0
+margin_right = 262.0
+margin_bottom = 136.0
+
+[node name="RightJoystick" parent="." instance=ExtResource( 1 )]
+visible = false
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = -311.0
+margin_top = -181.0
+margin_right = -1.0
+margin_bottom = 179.0
+
+[node name="TouchButtons" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 489.0
+margin_top = 195.0
+margin_right = -5.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Top" parent="TouchButtons" instance=ExtResource( 3 )]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+margin_left = -24.0
+margin_right = 24.0
+margin_bottom = 48.0
+action = "c"
+
+[node name="Right" parent="TouchButtons" instance=ExtResource( 3 )]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = -48.0
+margin_top = -24.0
+margin_right = 0.0
+margin_bottom = 24.0
+action = "ui_up"
+
+[node name="Bottom" parent="TouchButtons" instance=ExtResource( 3 )]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+margin_left = -24.0
+margin_top = -48.0
+margin_right = 24.0
+margin_bottom = 0.0
+action = "ui_up"
+
+[node name="Left" parent="TouchButtons" instance=ExtResource( 3 )]
+anchor_top = 0.5
+anchor_right = 0.0
+anchor_bottom = 0.5
+margin_top = -24.0
+margin_right = 48.0
+margin_bottom = 24.0
+action = "ui_up"
