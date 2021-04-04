@@ -1,0 +1,434 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://Demo/ChangeDemo.cs" type="Script" id=1]
+[ext_resource path="res://XHSystem/Design/Players/Simple/SimplePlayer.tscn" type="PackedScene" id=2]
+[ext_resource path="res://XHSystem/Design/Collisions/HurtBox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://XHSystem/Design/UISystems/Damage/DamageControl.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Demo/Demo.cs" type="Script" id=5]
+
+
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=1]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=2]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=3]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=4]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=5]
+
+[sub_resource type="CapsuleShape2D" id=6]
+radius = 67.0562
+
+[sub_resource type="CapsuleShape2D" id=7]
+radius = 46.6821
+
+[sub_resource type="CapsuleShape2D" id=8]
+radius = 54.2332
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=9]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=10]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=11]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=12]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=13]
+
+[node name="Demo" type="Node2D"]
+script = ExtResource( 5 )
+path = "res://Demo/Demo.tscn"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="keyboard " type="Button" parent="CanvasLayer"]
+visible = false
+margin_left = 17.4949
+margin_top = 36.5017
+margin_right = 80.4949
+margin_bottom = 56.5017
+text = "keyboard "
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="mouse" type="Button" parent="CanvasLayer"]
+margin_left = 105.368
+margin_top = 36.622
+margin_right = 171.368
+margin_bottom = 56.622
+text = "mouse"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+controller_name = "player_mouse"
+
+[node name="DamageControl" parent="CanvasLayer" instance=ExtResource( 4 )]
+mouse_filter = 2
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+margin_left = 185.558
+margin_top = 108.12
+margin_right = 285.558
+margin_bottom = 128.12
+text = "changeScreen"
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="SimplePlayer" parent="." instance=ExtResource( 2 )]
+position = Vector2( 353.285, 284.039 )
+collision_mask = 0
+
+[node name="AnimationTree" parent="SimplePlayer" index="1"]
+parameters/playback = SubResource( 1 )
+
+[node name="HurtBox" parent="SimplePlayer" index="5"]
+collision_layer = 0
+collision_mask = 6
+
+[node name="SimplePlayer2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 249.153, 392.666 )
+collision_mask = 0
+
+[node name="AnimationTree" parent="SimplePlayer2" index="1"]
+parameters/playback = SubResource( 2 )
+
+[node name="HurtBox" parent="SimplePlayer2" index="5"]
+collision_layer = 0
+collision_mask = 6
+
+[node name="SimplePlayer3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 386.248, 384.425 )
+collision_mask = 0
+
+[node name="AnimationTree" parent="SimplePlayer3" index="1"]
+parameters/playback = SubResource( 3 )
+
+[node name="HurtBox" parent="SimplePlayer3" index="5"]
+collision_layer = 0
+collision_mask = 6
+
+[node name="SimplePlayer4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 491.879, 397.161 )
+collision_mask = 0
+
+[node name="AnimationTree" parent="SimplePlayer4" index="1"]
+parameters/playback = SubResource( 4 )
+
+[node name="HurtBox" parent="SimplePlayer4" index="5"]
+collision_layer = 0
+collision_mask = 6
+
+[node name="SimplePlayer5" parent="." instance=ExtResource( 2 )]
+position = Vector2( 464.909, 252.574 )
+collision_mask = 0
+
+[node name="AnimationTree" parent="SimplePlayer5" index="1"]
+parameters/playback = SubResource( 5 )
+
+[node name="HurtBox" parent="SimplePlayer5" index="5"]
+collision_layer = 0
+collision_mask = 6
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 143.881, 234.628 )
+collision_layer = 0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource( 6 )
+
+[node name="Acceleration" parent="." instance=ExtResource( 3 )]
+collision_layer = 4
+collision_mask = 2147483648
+
+[node name="CollisionShape2D" parent="Acceleration" index="0"]
+position = Vector2( 549.091, 164.334 )
+shape = SubResource( 7 )
+
+[node name="Decelerate" parent="." instance=ExtResource( 3 )]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" parent="Decelerate" index="0"]
+position = Vector2( 375.853, 137.642 )
+shape = SubResource( 8 )
+
+[node name="Decelerate2" parent="." instance=ExtResource( 3 )]
+position = Vector2( -103.238, -120.208 )
+collision_layer = 2
+collision_mask = 0
+
+[node name="Decelerate3" parent="." instance=ExtResource( 3 )]
+position = Vector2( -491.439, -8.48526 )
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" parent="Decelerate3" index="0"]
+position = Vector2( 375.853, 137.642 )
+shape = SubResource( 8 )
+
+[node name="Decelerate4" parent="." instance=ExtResource( 3 )]
+position = Vector2( -364.867, -74.9533 )
+collision_layer = 2
+collision_mask = 0
+
+[node name="Decelerate5" parent="." instance=ExtResource( 3 )]
+position = Vector2( -425.678, 119.501 )
+collision_layer = 2
+collision_mask = 0
+
+[node name="Decelerate6" parent="." instance=ExtResource( 3 )]
+position = Vector2( -659.024, 32.527 )
+collision_layer = 2
+collision_mask = 0
+
+[node name="Decelerate7" parent="." instance=ExtResource( 3 )]
+position = Vector2( -611.648, -19.0918 )
+rotation = -0.261799
+collision_layer = 2
+collision_mask = 0
+
+[node name="Decelerate8" parent="." instance=ExtResource( 3 )]
+position = Vector2( -465.276, -80.6101 )
+rotation = -0.261799
+collision_layer = 2
+collision_mask = 0
+
+[node name="Decelerate9" parent="." instance=ExtResource( 3 )]
+position = Vector2( -292.035, -153.442 )
+rotation = -0.261799
+collision_layer = 2
+collision_mask = 0
+
+[node name="Decelerate10" parent="." instance=ExtResource( 3 )]
+position = Vector2( -119.501, -182.434 )
+rotation = -0.261799
+collision_layer = 2
+collision_mask = 0
+
+[node name="Decelerate11" parent="." instance=ExtResource( 3 )]
+position = Vector2( 46.0618, -133.739 )
+rotation = -0.261799
+collision_layer = 2
+collision_mask = 0
+
+[node name="Decelerate12" parent="." instance=ExtResource( 3 )]
+position = Vector2( 225.859, -40.0943 )
+rotation = -0.261799
+collision_layer = 2
+collision_mask = 0
+
+[node name="Decelerate13" parent="." instance=ExtResource( 3 )]
+position = Vector2( 306.018, 111.235 )
+rotation = -0.261799
+collision_layer = 2
+collision_mask = 0
+
+[node name="Decelerate14" parent="." instance=ExtResource( 3 )]
+position = Vector2( 211.625, 261.815 )
+rotation = -0.261799
+collision_layer = 2
+collision_mask = 0
+
+[node name="SimplePlayer6" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1867.26, 318.018 )
+collision_mask = 0
+
+[node name="AnimationTree" parent="SimplePlayer6" index="1"]
+parameters/playback = SubResource( 9 )
+
+[node name="HurtBox" parent="SimplePlayer6" index="5"]
+collision_layer = 0
+collision_mask = 6
+
+[node name="SimplePlayer7" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1763.13, 426.645 )
+collision_mask = 0
+
+[node name="AnimationTree" parent="SimplePlayer7" index="1"]
+parameters/playback = SubResource( 10 )
+
+[node name="HurtBox" parent="SimplePlayer7" index="5"]
+collision_layer = 0
+collision_mask = 6
+
+[node name="SimplePlayer8" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1900.22, 418.405 )
+collision_mask = 0
+
+[node name="AnimationTree" parent="SimplePlayer8" index="1"]
+parameters/playback = SubResource( 11 )
+
+[node name="HurtBox" parent="SimplePlayer8" index="5"]
+collision_layer = 0
+collision_mask = 6
+
+[node name="SimplePlayer9" parent="." instance=ExtResource( 2 )]
+position = Vector2( 2005.85, 431.14 )
+collision_mask = 0
+
+[node name="AnimationTree" parent="SimplePlayer9" index="1"]
+parameters/playback = SubResource( 12 )
+
+[node name="HurtBox" parent="SimplePlayer9" index="5"]
+collision_layer = 0
+collision_mask = 6
+
+[node name="SimplePlayer10" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1978.88, 286.554 )
+collision_mask = 0
+
+[node name="AnimationTree" parent="SimplePlayer10" index="1"]
+parameters/playback = SubResource( 13 )
+
+[node name="HurtBox" parent="SimplePlayer10" index="5"]
+collision_layer = 0
+collision_mask = 6
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2( 1657.86, 268.607 )
+collision_layer = 0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+shape = SubResource( 6 )
+
+[node name="Acceleration2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1513.97, 33.9795 )
+collision_layer = 4
+collision_mask = 2147483648
+
+[node name="CollisionShape2D" parent="Acceleration2" index="0"]
+position = Vector2( 549.091, 164.334 )
+shape = SubResource( 7 )
+
+[node name="Decelerate15" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1513.97, 33.9795 )
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" parent="Decelerate15" index="0"]
+position = Vector2( 375.853, 137.642 )
+shape = SubResource( 8 )
+
+[node name="Decelerate16" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1410.74, -86.2287 )
+collision_layer = 2
+collision_mask = 0
+
+[node name="Decelerate17" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1022.54, 25.4942 )
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" parent="Decelerate17" index="0"]
+position = Vector2( 375.853, 137.642 )
+shape = SubResource( 8 )
+
+[node name="Decelerate18" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1149.11, -40.9738 )
+collision_layer = 2
+collision_mask = 0
+
+[node name="Decelerate19" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1088.3, 153.481 )
+collision_layer = 2
+collision_mask = 0
+
+[node name="Decelerate20" parent="." instance=ExtResource( 3 )]
+position = Vector2( 854.951, 66.5065 )
+collision_layer = 2
+collision_mask = 0
+
+[node name="Decelerate21" parent="." instance=ExtResource( 3 )]
+position = Vector2( 902.327, 14.8876 )
+rotation = -0.261799
+collision_layer = 2
+collision_mask = 0
+
+[node name="Decelerate22" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1048.7, -46.6306 )
+rotation = -0.261799
+collision_layer = 2
+collision_mask = 0
+
+[node name="Decelerate23" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1221.94, -119.463 )
+rotation = -0.261799
+collision_layer = 2
+collision_mask = 0
+
+[node name="Decelerate24" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1394.47, -148.454 )
+rotation = -0.261799
+collision_layer = 2
+collision_mask = 0
+
+[node name="Decelerate25" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1560.04, -99.759 )
+rotation = -0.261799
+collision_layer = 2
+collision_mask = 0
+
+[node name="Decelerate26" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1739.83, -6.11484 )
+rotation = -0.261799
+collision_layer = 2
+collision_mask = 0
+
+[node name="Decelerate27" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1819.99, 145.214 )
+rotation = -0.261799
+collision_layer = 2
+collision_mask = 0
+
+[node name="Decelerate28" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1725.6, 295.794 )
+rotation = -0.261799
+collision_layer = 2
+collision_mask = 0
+
+[editable path="SimplePlayer"]
+
+[editable path="SimplePlayer2"]
+
+[editable path="SimplePlayer3"]
+
+[editable path="SimplePlayer4"]
+
+[editable path="SimplePlayer5"]
+
+[editable path="Acceleration"]
+
+[editable path="Decelerate"]
+
+[editable path="Decelerate3"]
+
+[editable path="SimplePlayer6"]
+
+[editable path="SimplePlayer7"]
+
+[editable path="SimplePlayer8"]
+
+[editable path="SimplePlayer9"]
+
+[editable path="SimplePlayer10"]
+
+[editable path="Acceleration2"]
+
+[editable path="Decelerate15"]
+
+[editable path="Decelerate17"]

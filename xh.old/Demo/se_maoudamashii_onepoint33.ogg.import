@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/se_maoudamashii_onepoint33.ogg-bd870971c798714f8ad316cf59566199.oggstr"
+
+[deps]
+
+source_file="res://Demo/se_maoudamashii_onepoint33.ogg"
+dest_files=[ "res://.import/se_maoudamashii_onepoint33.ogg-bd870971c798714f8ad316cf59566199.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
